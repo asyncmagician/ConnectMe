@@ -74,7 +74,7 @@ const submitForm = async () => {
 }
 
 .btn-primary {
-  background-color: #007bff;
+  background-color: #a8279a;
   color: #fff;
   border: none;
   padding: 10px 20px;
