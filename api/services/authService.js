@@ -31,11 +31,4 @@ const loginUser = async (username, password) => {
     return { token, userId };
 };
 
-const logoutUser = () => {
-    // Fonction de déconnexion vide
-};
-
-module.exports = { logoutUser };
-
-
 module.exports = { registerUser, loginUser };
