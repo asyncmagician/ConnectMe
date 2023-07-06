@@ -13,6 +13,9 @@ The project is organized into two main directories:
 
 ## Getting Started
 
+### Prerequisites
+- [Node.js](https://nodejs.org/en)
+
 To get started with the ConnectMe project, follow these steps:
 
 1. Clone the repository:
@@ -24,5 +27,15 @@ To get started with the ConnectMe project, follow these steps:
 2. Install the dependancies
 
     ```bash
-   npm install && cd src/ && npm install 
+   npm i && cd src && npm i && cd ../
    ```
+   
+3. Start API+UI development server
+
+   ```bash
+   npm run api && cd src && npm run dev && cd ../
+   ```
+   
+## License
+ConnectMe is open-source software licensed under the MIT License.
+
