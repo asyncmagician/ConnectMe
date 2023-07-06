@@ -2,8 +2,13 @@
   <header>
     <div id="nav">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand">ConnectMe</a>
-        <div class="navbar-collapse justify-content-end">
+        <RouterLink to="/" class="navbar-brand">ConnectMe</RouterLink>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
           <ul class="navbar-nav">
             <li class="nav-item" v-if="!user">
               <RouterLink to="/signin" class="nav-link">Sign In</RouterLink>
@@ -12,10 +17,7 @@
               <RouterLink to="/signup" class="nav-link">Sign Up</RouterLink>
             </li>
             <li class="nav-item" v-if="user">
-              <RouterLink to="/" class="nav-link">Home</RouterLink>
-            </li>
-            <li class="nav-item" v-if="user">
-              <button @click="logout" class="nav-link btn btn-outline-primary">Log Out</button>
+              <button @click="logout" class="nav-link btn btn-outline-primary">Logout</button>
             </li>
           </ul>
         </div>
@@ -69,6 +71,15 @@ export default {
   color: #2c3e50;
 }
 
+.navbar-toggler {
+  border: none;
+  outline: none;
+}
+
+.navbar-toggler-icon {
+  background-color: #2c3e50;
+}
+
 .navbar-nav .nav-link {
   font-size: 16px;
   color: #2c3e50;
@@ -82,8 +93,9 @@ export default {
 
 .btn-outline-primary {
   font-size: 16px;
-  color: #007bff;
+  color: #da1299;
   border-color: #007bff;
+  transition: all 0.3s ease;
 }
 
 .btn-outline-primary:hover {

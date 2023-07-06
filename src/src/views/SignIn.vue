@@ -1,25 +1,31 @@
 <template>
   <div class="login-container">
-    <h1 class="login-title">Sign In</h1>
-    <form @submit.prevent="submitForm" class="login-form">
-      <div class="form-group">
-        <label for="username" class="form-label">Username</label>
-        <input type="text" class="form-control" v-model="username" id="username" required>
-      </div>
-      <div class="form-group">
-        <label for="password" class="form-label">Password</label>
-        <input type="password" class="form-control" v-model="password" id="password" required>
-      </div>
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary">Sign In</button>
-      </div>
-    </form>
-    <div v-if="errorMessage" class="error-message">{{ errorMessage }}</div>
+    <template v-if="!userStore.isLoggedIn">
+      <h1 class="login-title">Sign In</h1>
+      <form @submit.prevent="submitForm" class="login-form">
+        <div class="form-group">
+          <label for="username" class="form-label">Username</label>
+          <input type="text" class="form-control" v-model="username" id="username" required>
+        </div>
+        <div class="form-group">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" v-model="password" id="password" required>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Sign In</button>
+        </div>
+      </form>
+      <div v-if="errorMessage" class="error-message">{{ errorMessage }}</div>
+    </template>
+    <p class="text-danger fs-3 text-center" v-else>You are already logged in.</p>
   </div>
 </template>
 
 <script setup>
 import axios from 'axios';
+import { useUserStore } from '../stores/userStore.js';
+
+const userStore = useUserStore();
 
 let username = '';
 let password = '';
@@ -33,6 +39,7 @@ const submitForm = async () => {
     const token = response.data.token;
     localStorage.setItem('token', token);
 
+    userStore.loginUser(response.data.user);
     window.location.href = "/";
   } catch (error) {
     if (error.response && error.response.status === 401) {

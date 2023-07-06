@@ -28,7 +28,7 @@ const handleSubmit = async (event) => {
 
 <template>
   <div class="signup-container">
-    <h1 class="signup-title">Join us!</h1>
+    <h1 class="signup-title">Sign Up</h1>
     <form @submit="handleSubmit" class="signup-form">
       <div class="form-group">
         <label for="username" class="form-label">Username</label>
